@@ -1,16 +1,52 @@
-# React + Vite
+Poki Photo Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single-page wedding photo gallery built with React, Vite, and Tailwind CSS.
+Created as a wedding gift for my godfather and godmother (Orthodox tradition).
 
-Currently, two official plugins are available:
+The page features a vertical timeline layout where photos appear in chronological order, alternating left and right. Each photo is accompanied by a year and a short description. The design is elegant, minimal, and fully responsive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
 
-## React Compiler
+📸 Timeline-based photo gallery
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+↔️ Alternating left/right layout
 
-## Expanding the ESLint configuration
+📝 Captions with year + description
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎨 Minimal and elegant design
+
+📱 Fully responsive (mobile, tablet, desktop)
+
+🛠️ Tech Stack
+
+React
+
+Vite
+
+Tailwind CSS
+
+⚙️ Setup
+
+Clone the repository and install dependencies:
+
+git clone https://github.com/YOUR_USERNAME/poki-photo-gallery.git
+cd poki-photo-gallery
+npm install
+npm run dev
+
+📂 Project Structure
+poki-photo-gallery/
+├── src/
+│ ├── assets/ # Images
+│ ├── components/ # Reusable components
+│ ├── pages/ # Main page
+│ ├── App.jsx
+│ └── index.css
+├── tailwind.config.js
+├── postcss.config.js
+└── package.json
+
+🎁 About the Project
+
+This gallery is a personal project made as a special wedding gift for my best man & maid of honor.
+It combines meaningful memories into a single-page timeline to celebrate their journey together.
