@@ -1,4 +1,4 @@
-Poki Photo Gallery
+# Poki Photo Gallery
 
 Single-page wedding photo gallery built with React, Vite, and Tailwind CSS.
 Created as a wedding gift for my godfather and godmother (Orthodox tradition).
