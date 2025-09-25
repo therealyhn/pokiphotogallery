@@ -35,7 +35,7 @@ const photos = [
 
 export default function Timeline() {
     return (
-        <div className="relative w-full max-w-5xl mx-auto">
+        <div className="relative w-full max-w-7xl mx-auto">
             {/* centralna linija */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-300 h-full"></div>
 
