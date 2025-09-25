@@ -2,8 +2,8 @@ name: Deploy to Hostinger (Vite + FTP)
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [main] # promeni ako koristiš drugi branch (npr. master)
+  workflow_dispatch: # ručno pokretanje
 
 jobs:
   build-and-deploy:
@@ -25,6 +25,7 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
+      # Dijagnostika: da vidimo da dist postoji
       - name: List dist (diagnostic)
         run: |
           echo "root:"
@@ -38,10 +39,15 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          # Ako znaš da je 21, može i bez ovog reda (default je 21)
           port: ${{ secrets.FTP_PORT }}
+          # Hostinger obično preferira FTPS (explicit):
           protocol: ftps
           local-dir: dist/
-          server-dir: / # <- imgonaloseitasdsadsas
+          # VAŽNO: postavi tačan put!
+          # Ako je FTP user "zaključan" u public_html, koristi samo "/"
+          # Ako nije zaključan, a deploy ide u glavni domen:
+          server-dir: /
           log-level: verbose
           timeout: 60000
           state-name: .ftp-deploy-sync.json
