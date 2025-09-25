@@ -25,7 +25,7 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
-      # Dijagnostika: da vidimo da dist postoji
+      # Diagnostika
       - name: List dist (diagnostic)
         run: |
           echo "root:"
