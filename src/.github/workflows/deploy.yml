@@ -41,7 +41,7 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           protocol: ftps
           local-dir: dist/
-          server-dir: / # <- imgonaloseit
+          server-dir: / # <- imgonaloseitasdsadsas
           log-level: verbose
           timeout: 60000
           state-name: .ftp-deploy-sync.json
