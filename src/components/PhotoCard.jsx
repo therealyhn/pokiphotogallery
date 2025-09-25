@@ -28,7 +28,7 @@ export default function PhotoCard({ photo, align, onClick }) {
             <div className="flex items-center justify-between p-6 bg-gradient-to-t from-gray-50 to-white">
                 {/* Tekst */}
                 <div className="flex-1 pr-4">
-                    <p className="text-main font-heading font-semibold text-lg mb-1">
+                    <p className="text-tr font-heading font-semibold text-lg mb-1">
                         {photo.year}
                     </p>
                     <p className="font-body text-black text-base italic">
