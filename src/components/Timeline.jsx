@@ -19,6 +19,18 @@ const photos = [
         year: "2025",
         description: "Celebrating new beginnings with family and godchildren.",
     },
+    {
+        id: 4,
+        src: "https://placehold.co/600x400",
+        year: "2025",
+        description: "Celebrating new beginnings with family and godchildren.",
+    },
+    {
+        id: 5,
+        src: "https://placehold.co/600x400",
+        year: "2025",
+        description: "Celebrating new beginnings with family and godchildren.",
+    },
 ];
 
 export default function Timeline() {
@@ -27,7 +39,7 @@ export default function Timeline() {
             {/* centralna linija */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-300 h-full"></div>
 
-            <div className="flex flex-col space-y-8">
+            <div className="flex flex-col">
                 {photos.map((photo, index) => (
                     <div
                         key={photo.id}
