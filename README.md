@@ -28,7 +28,7 @@ The page features a vertical **timeline layout** where photos appear in chronolo
 Clone the repository and install dependencies:  
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/poki-photo-gallery.git
+git clone https://github.com/therealyhn/pokiphotogallery
 cd poki-photo-gallery
 npm install
 npm run dev
