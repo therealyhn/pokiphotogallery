@@ -1,34 +1,47 @@
-name: 🚀 Deploy to Hostinger
+name: Deploy to Hostinger (Vite + FTP)
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: "npm"
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
-      - name: Build project
+      - name: Build (Vite)
         run: npm run build
 
-      - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+      - name: List dist (diagnostic)
+        run: |
+          echo "root:"
+          ls -lah
+          echo "dist:"
+          ls -lah dist || echo "dist missing!"
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/ # putanja na serveru
-          local-dir: ./dist
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftps
+          local-dir: dist/
+          server-dir: /public_html/ # <- promeni prema strukturi na Hostingeru
+          log-level: verbose
+          timeout: 60000
+          state-name: .ftp-deploy-sync.json
