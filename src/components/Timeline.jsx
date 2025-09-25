@@ -50,7 +50,7 @@ export default function Timeline() {
                         className={`relative flex w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
                     >
                         {/* mark */}
-                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-orange-500 border-4 border-white rounded-full shadow-md"></span>
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-tr border-4 border-white rounded-full shadow-md"></span>
 
                         <PhotoCard
                             photo={photo}

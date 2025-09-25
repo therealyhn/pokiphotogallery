@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        main: "#f7cccb",
+        sec: "#e0bbba",
+        tr: "#dea1a0",
+      },
       fontFamily: {
         heading: ["Playfair Display", "serif"],
         title: ["Cinzel", "serif"],
@@ -15,3 +20,4 @@ export default {
   },
   plugins: [],
 }
+

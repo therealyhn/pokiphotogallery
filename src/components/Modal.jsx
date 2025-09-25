@@ -20,7 +20,7 @@ export default function Modal({ photo, onClose }) {
 
                 {/* Overlay tekst */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-6">
-                    <p className="text-orange-400 font-heading text-lg">{photo.year}</p>
+                    <p className="text-main font-heading text-lg">{photo.year}</p>
                     <p className="font-body text-sm md:text-base">{photo.description}</p>
                 </div>
 

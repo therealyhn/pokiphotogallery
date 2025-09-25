@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
+import pig from "../assets/pig.png"; // prilagodi path ako je drugde
 
 export default function PhotoCard({ photo, align, onClick }) {
     const variants = {
@@ -17,16 +18,33 @@ export default function PhotoCard({ photo, align, onClick }) {
             variants={variants}
             onClick={onClick}
         >
-            <img src={photo.src} alt={photo.year} className="w-full h-96 object-cover" />
-            <div className="p-6 bg-gradient-to-t from-gray-50 to-white">
-                <p className="text-orange-600 font-heading font-semibold text-lg mb-1">
-                    {photo.year}
-                </p>
-                <p className="font-body text-gray-700 text-base italic">
-                    {photo.description}
-                </p>
+            <img
+                src={photo.src}
+                alt={photo.year}
+                className="w-full h-96 object-cover"
+            />
+
+            {/* opis box podeljen na flex */}
+            <div className="flex items-center justify-between p-6 bg-gradient-to-t from-gray-50 to-white">
+                {/* Tekst */}
+                <div className="flex-1 pr-4">
+                    <p className="text-main font-heading font-semibold text-lg mb-1">
+                        {photo.year}
+                    </p>
+                    <p className="font-body text-black text-base italic">
+                        {photo.description}
+                    </p>
+                </div>
+
+                {/* Slika */}
+                <div className="w-20 h-20 flex-shrink-0">
+                    <img
+                        src={pig}
+                        alt="decorative"
+                        className="w-full h-full object-contain opacity-60"
+                    />
+                </div>
             </div>
         </motion.div>
     );
 }
-
