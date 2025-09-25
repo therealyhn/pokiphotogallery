@@ -1,35 +1,36 @@
 import { useState } from "react";
 import PhotoCard from "./PhotoCard";
 import Modal from "./Modal";
+import holder from "../assets/holder.jpg";
 
 const photos = [
     {
         id: 1,
-        src: "https://placehold.co/1920x1080",
+        src: holder,
         year: "2023",
         description: "The moment we said 'I do' under the autumn sky, surrounded by family and friends.",
     },
     {
         id: 2,
-        src: "https://placehold.co/1920x1080",
+        src: holder,
         year: "2024",
         description: "Our first dance together, filled with joy and love.",
     },
     {
         id: 3,
-        src: "https://placehold.co/1920x1080",
+        src: holder,
         year: "2025",
         description: "Celebrating new beginnings with family and godchildren.",
     },
     {
         id: 4,
-        src: "https://placehold.co/1920x1080",
+        src: holder,
         year: "2025",
         description: "Celebrating new beginnings with family and godchildren.",
     },
     {
         id: 5,
-        src: "https://placehold.co/1920x1080",
+        src: holder,
         year: "2025",
         description: "Celebrating new beginnings with family and godchildren.",
     },
