@@ -3,50 +3,59 @@ import { motion } from "framer-motion";
 import Timeline from "./Timeline";
 
 export default function Gallery() {
-    return (
-        <section className="py-16 bg-gray-50">
-            <div className="text-center mb-12">
-                {/* PO + KI animacija */}
-                <div className="flex justify-center items-center">
-                    <motion.span
-                        initial={{ opacity: 0, x: -80 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1.3 }}
-                        className="font-title text-7xl md:text-8xl text-orange-600"
-                    >
-                        PO
-                    </motion.span>
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="text-center mb-12">
+        {/* Olja & Andrija animacija */}
+        <div className="flex justify-center items-baseline gap-x-6">
+          <motion.span
+            initial={{ opacity: 0, x: -80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="font-title text-7xl md:text-8xl text-orange-600"
+          >
+            Olja
+          </motion.span>
 
-                    <motion.span
-                        initial={{ opacity: 0, x: 80 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1.3 }}
-                        className="font-title text-7xl md:text-8xl text-orange-600"
-                    >
-                        KI
-                    </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: -80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="font-title text-5xl md:text-6xl text-orange-600"
+          >
+            &
+          </motion.span>
 
-                </div>
+          <motion.span
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="font-title text-7xl md:text-8xl text-orange-600"
+          >
+            Andrija
+          </motion.span>
+        </div>
 
-                {/* PHOTO GALLERY ispod */}
-                <motion.h1
-                    initial={{ opacity: 0, x: -80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1.3 }} className="font-heading text-3xl md:text-4xl font-bold text-gray-800 mt-2">
-                    PHOTO GALLERY
-                </motion.h1>
+        {/* Ljubavna Hronologija */}
+        <motion.h1
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="font-heading text-3xl md:text-4xl font-bold text-gray-800 mt-2"
+        >
+          Ljubavna Hronologija
+        </motion.h1>
 
-                {/* underline linija */}
-                <motion.span
-                    initial={{ opacity: 0, x: 80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1.3 }}
-                    className="block w-[500px] h-[3px] bg-orange-500 mx-auto mt-4">
+        {/* underline linija */}
+        <motion.span
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="block w-[500px] h-[3px] bg-orange-500 mx-auto mt-4"
+        ></motion.span>
+      </div>
 
-                </motion.span>
-            </div>
-
-            <Timeline />
-        </section>
-    );
+      <Timeline />
+    </section>
+  );
 }

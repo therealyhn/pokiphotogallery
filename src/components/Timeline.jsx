@@ -1,9 +1,11 @@
+import { useState } from "react";
 import PhotoCard from "./PhotoCard";
+import Modal from "./Modal";
 
 const photos = [
     {
         id: 1,
-        src: "https://placehold.co/1920x1080", // zameni pravim fotkama
+        src: "https://placehold.co/1920x1080",
         year: "2023",
         description: "The moment we said 'I do' under the autumn sky, surrounded by family and friends.",
     },
@@ -34,6 +36,8 @@ const photos = [
 ];
 
 export default function Timeline() {
+    const [selectedPhoto, setSelectedPhoto] = useState(null);
+
     return (
         <div className="relative w-full max-w-7xl mx-auto">
             {/* centralna linija */}
@@ -45,14 +49,20 @@ export default function Timeline() {
                         key={photo.id}
                         className={`relative flex w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
                     >
-                        {/* marker tačka */}
-                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 w-4 h-4 bg-orange-500 border-4 border-white rounded-full shadow"></span>
+                        {/* mark */}
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-orange-500 border-4 border-white rounded-full shadow-md"></span>
 
-                        <PhotoCard photo={photo} align={index % 2 === 0 ? "left" : "right"} />
+                        <PhotoCard
+                            photo={photo}
+                            align={index % 2 === 0 ? "left" : "right"}
+                            onClick={() => setSelectedPhoto(photo)}
+                        />
                     </div>
                 ))}
             </div>
 
+            {/* Modal */}
+            <Modal photo={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
         </div>
     );
 }
