@@ -40,7 +40,7 @@ export default function Timeline() {
 
     return (
         <div className="relative w-full max-w-7xl mx-auto">
-            {/* centralna linija */}
+            {/* centralna linijaa */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-300 h-full"></div>
 
             <div className="flex flex-col space-y-[-50px]">
