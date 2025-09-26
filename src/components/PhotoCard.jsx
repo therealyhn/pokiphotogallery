@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
-import pig from "../assets/pig.png"; // proveri putanju
+import pig from "../assets/pig.png";
 
 export default function PhotoCard({ photo, align, onClick }) {
   const variants = {
@@ -14,30 +14,30 @@ export default function PhotoCard({ photo, align, onClick }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.9 }}
       variants={variants}
       onClick={onClick}
     >
-      {/* Slika u galeriji */}
+      {/* Galerija slike - kontrolisana proporcija */}
       <div className="w-full aspect-[3/2]">
         <img
           src={photo.src}
           alt={photo.year}
           loading="lazy"
-          className="w-full h-full object-cover object-center rounded-t-xl"
+          // zoomed out visually: scale(0.9). transition for smoothness.
+          style={{ transform: "scale(0.8)" }}
+          className="w-full h-full object-cover object-center rounded-t-xl transition-transform duration-300"
         />
       </div>
 
       {/* Box sa pig.png u dnu desno */}
       <div className="relative p-6 bg-gradient-to-t from-gray-50 to-white overflow-hidden">
-        {/* pig.png kao watermark bottom-right */}
         <img
           src={pig}
           alt=""
-          className="absolute bottom-2 right-2 w-16 h-16 object-contain opacity-30 pointer-events-none"
+          className="absolute bottom-2 right-2 w-20 h-20 object-contain opacity-50 pointer-events-none"
         />
 
-        {/* Tekst */}
         <div className="relative z-10">
           <p className="text-main font-heading font-semibold text-lg mb-1">
             {photo.year}
