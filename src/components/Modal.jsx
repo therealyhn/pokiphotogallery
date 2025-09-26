@@ -5,27 +5,33 @@ export default function Modal({ photo, onClose }) {
     const [year, setYear] = useState(photo?.year || "");
     const [description, setDescription] = useState(photo?.description || "");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(""); // za poruke o grešci
 
     if (!photo) return null;
 
     const handleDelete = async () => {
-        if (!password) return alert("Enter password first");
+        if (!password) return setError("⚠ Please enter password");
 
-        await fetch("/delete.php", {
+        const response = await fetch("/delete.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ id: photo.id, password }),
         });
 
-        onClose();
-        window.location.reload();
+        const text = await response.text();
+        if (response.ok && text.includes("✅")) {
+            onClose();
+            window.location.reload();
+        } else {
+            setError("❌ Wrong password or error deleting file");
+        }
     };
 
     const handleEdit = async (e) => {
         e.preventDefault();
-        if (!password) return alert("Enter password first");
+        if (!password) return setError("⚠ Please enter password");
 
-        await fetch("/edit.php", {
+        const response = await fetch("/edit.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({
@@ -36,9 +42,46 @@ export default function Modal({ photo, onClose }) {
             }),
         });
 
-        setEditing(false);
-        onClose();
-        window.location.reload();
+        const text = await response.text();
+        if (response.ok && !text.includes("❌")) {
+            setEditing(false);
+            onClose();
+            window.location.reload();
+        } else {
+            setError("❌ Wrong password or error editing file");
+        }
+    };
+
+    const handleDownload = async () => {
+        if (!password) return setError("⚠ Please enter password");
+
+        const formData = new FormData();
+        formData.append("id", photo.id);
+        formData.append("password", password);
+
+        const response = await fetch("/download.php", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (response.ok) {
+            const blob = await response.blob();
+            if (blob.type.includes("text/html")) {
+                // znači da je vraćena greška, ne fajl
+                setError("❌ Wrong password or error downloading file");
+                return;
+            }
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = photo.src.split("/").pop();
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } else {
+            setError("❌ Wrong password or error downloading file");
+        }
     };
 
     return (
@@ -97,6 +140,9 @@ export default function Modal({ photo, onClose }) {
                                     required
                                 />
                             </div>
+                            {error && (
+                                <p className="text-red-500 text-sm">{error}</p>
+                            )}
                             <div className="flex gap-3">
                                 <button
                                     type="submit"
@@ -115,12 +161,13 @@ export default function Modal({ photo, onClose }) {
                         </form>
                     ) : (
                         <>
-                            <p className="text-tr font-heading font-semibold text-lg">
+                            <p className="text-main font-heading font-semibold text-lg">
                                 {photo.year}
                             </p>
                             <p className="text-gray-700 italic">{photo.description}</p>
 
-                            <div className="mt-4 flex gap-3">
+                            {/* Buttons */}
+                            <div className="mt-4 flex flex-wrap gap-3">
                                 <button
                                     onClick={() => setEditing(true)}
                                     className="bg-main hover:bg-sec text-black px-4 py-2 rounded-lg"
@@ -132,6 +179,12 @@ export default function Modal({ photo, onClose }) {
                                     className="bg-red-500 hover:bg-red-600 text-black px-4 py-2 rounded-lg"
                                 >
                                     🗑 Delete
+                                </button>
+                                <button
+                                    onClick={handleDownload}
+                                    className="bg-orange-500 hover:bg-orange-600 text-black px-4 py-2 rounded-lg"
+                                >
+                                    ⬇ Download
                                 </button>
                             </div>
 
@@ -148,6 +201,10 @@ export default function Modal({ photo, onClose }) {
                                     required
                                 />
                             </div>
+
+                            {error && (
+                                <p className="text-red-500 text-sm mt-2">{error}</p>
+                            )}
                         </>
                     )}
                 </div>

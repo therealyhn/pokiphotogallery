@@ -8,8 +8,24 @@ if (!is_dir($targetDir)) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["file"])) {
-    if ($_POST['password'] !== $validPassword) {
-        die("<p style='color:red;text-align:center;font-family:sans-serif'>❌ Unauthorized</p>");
+    $password = $_POST['password'] ?? '';
+    if ($password !== $validPassword) {
+        echo "
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head>
+          <meta charset='UTF-8'>
+          <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+          <script src='https://cdn.tailwindcss.com'></script>
+        </head>
+        <body class='bg-gray-50 flex items-center justify-center min-h-screen'>
+          <div class='bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center'>
+            <p class='text-red-600 font-semibold text-xl mb-4'>❌ Wrong password</p>
+            <a href='upload.php' class='inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Try Again</a>
+          </div>
+        </body>
+        </html>";
+        exit;
     }
 
     $fileName = time() . "_" . basename($_FILES["file"]["name"]);
@@ -47,7 +63,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["file"])) {
         </body>
         </html>";
     } else {
-        echo "❌ Error uploading file.";
+        echo "
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head>
+          <meta charset='UTF-8'>
+          <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+          <script src='https://cdn.tailwindcss.com'></script>
+        </head>
+        <body class='bg-gray-50 flex items-center justify-center min-h-screen'>
+          <div class='bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center'>
+            <p class='text-red-600 font-semibold text-xl mb-4'>❌ Error uploading file</p>
+            <a href='upload.php' class='inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Try Again</a>
+          </div>
+        </body>
+        </html>";
     }
 } else {
     echo "
@@ -78,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["file"])) {
             <label class='block text-sm font-medium'>Password</label>
             <input type='password' name='password' required class='w-full border rounded-lg p-2' />
           </div>
-          <button type='submit' class='w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg'>Upload</button>
+          <button type='submit' class='w-full bg-[#f7cccb] hover:bg-[#dea1a0] text-white font-medium py-2 px-4 rounded-lg'>Upload</button>
         </form>
       </div>
     </body>
