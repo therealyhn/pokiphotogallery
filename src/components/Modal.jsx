@@ -115,7 +115,7 @@ export default function Modal({ photo, onClose }) {
                         </form>
                     ) : (
                         <>
-                            <p className="text-main font-heading font-semibold text-lg">
+                            <p className="text-tr font-heading font-semibold text-lg">
                                 {photo.year}
                             </p>
                             <p className="text-gray-700 italic">{photo.description}</p>
@@ -123,13 +123,13 @@ export default function Modal({ photo, onClose }) {
                             <div className="mt-4 flex gap-3">
                                 <button
                                     onClick={() => setEditing(true)}
-                                    className="bg-main hover:bg-sec text-white px-4 py-2 rounded-lg"
+                                    className="bg-main hover:bg-sec text-black px-4 py-2 rounded-lg"
                                 >
                                     ✏ Edit
                                 </button>
                                 <button
                                     onClick={handleDelete}
-                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+                                    className="bg-red-500 hover:bg-red-600 text-black px-4 py-2 rounded-lg"
                                 >
                                     🗑 Delete
                                 </button>

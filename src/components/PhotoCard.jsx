@@ -38,7 +38,7 @@ export default function PhotoCard({ photo, align, onClick }) {
         />
 
         <div className="relative z-10">
-          <p className="text-main font-heading font-semibold text-lg mb-1">
+          <p className="text-tr font-heading font-semibold text-lg mb-1">
             {photo.year}
           </p>
           <p className="font-body text-gray-700 text-base italic">
