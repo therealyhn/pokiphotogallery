@@ -136,7 +136,7 @@ export default function Modal({ photo, onClose }) {
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-orange-400 outline-none"
+                                    className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-sec outline-none"
                                     required
                                 />
                             </div>
@@ -146,7 +146,7 @@ export default function Modal({ photo, onClose }) {
                             <div className="flex gap-3">
                                 <button
                                     type="submit"
-                                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+                                    className="bg-tr hover:bg-main text-black px-4 py-2 rounded-lg"
                                 >
                                     Save
                                 </button>
