@@ -57,5 +57,5 @@ jobs:
           local-dir: dist/
           server-dir: /
           log-level: verbose
-          timeout: 60000
+          timeout: 180000
           state-name: .ftp-deploy-sync.json
