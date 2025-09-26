@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["file"])) {
         <body class='bg-gray-50 flex items-center justify-center min-h-screen'>
           <div class='bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center'>
             <p class='text-red-600 font-semibold text-xl mb-4'>❌ Wrong password</p>
-            <a href='upload.php' class='inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Try Again</a>
+            <a href='upload.php' class='inline-block bg-[#f7cccb] hover:bg-[#dea1a0] text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Try Again</a>
           </div>
         </body>
         </html>";
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["file"])) {
         <body class='bg-gray-50 flex items-center justify-center min-h-screen'>
           <div class='bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center'>
             <p class='text-green-600 font-semibold text-xl mb-4'>✅ Upload successful!</p>
-            <a href='/' class='inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Back to Gallery</a>
+            <a href='/' class='inline-block bg-[#f7cccb] hover:bg-[#dea1a0] text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Back to Gallery</a>
           </div>
         </body>
         </html>";
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["file"])) {
         <body class='bg-gray-50 flex items-center justify-center min-h-screen'>
           <div class='bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center'>
             <p class='text-red-600 font-semibold text-xl mb-4'>❌ Error uploading file</p>
-            <a href='upload.php' class='inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Try Again</a>
+            <a href='upload.php' class='inline-block bg-[#f7cccb] hover:bg-[#dea1a0] text-white font-medium py-2 px-6 rounded-lg shadow-md transition'>⬅ Try Again</a>
           </div>
         </body>
         </html>";
