@@ -160,7 +160,7 @@ export default function Modal({ photo, onClose }) {
             </form>
           ) : (
             <>
-              <p className="text-main font-heading font-semibold text-lg">
+              <p className="text-tr font-heading font-semibold text-lg">
                 {photo.year}
               </p>
               <p className="text-gray-700 italic">{photo.description}</p>

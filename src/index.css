@@ -9,7 +9,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #dea1a0; 
+  background: #f7cccb; 
 }
 
 ::-webkit-scrollbar-thumb {
@@ -18,13 +18,13 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f7cccb; 
+  background: #dea1a0; 
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #e0bbba #dea1a0; /* Thumb color matches 'prime', track matches 'prime-dark' */
+  scrollbar-color: #dea1a0 #e0bbba; /* Thumb color matches 'prime', track matches 'prime-dark' */
 }
 
 #loader-wrapper {
