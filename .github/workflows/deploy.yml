@@ -2,8 +2,8 @@ name: Deploy to Hostinger (Vite + FTP)
 
 on:
   push:
-    branches: [main] # promeni ako koristiš drugi branch (npr. master)
-  workflow_dispatch: # ručno pokretanje
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -25,13 +25,19 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
-      # Diagnostika
+      # Kopiraj PHP i JSON fajlove u dist
+      - name: Copy backend files
+        run: |
+          cp upload.php dist/
+          mkdir -p dist/uploads
+          cp uploads/images.json dist/uploads/images.json || echo "[]" > dist/uploads/images.json
+
       - name: List dist (diagnostic)
         run: |
           echo "root:"
           ls -lah
           echo "dist:"
-          ls -lah dist || echo "dist missing!"
+          ls -lah dist
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -39,15 +45,11 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Ako znaš da je 21, može i bez ovog reda (default je 21)
           port: ${{ secrets.FTP_PORT }}
-          # Hostinger obično preferira FTPS (explicit):
           protocol: ftps
           local-dir: dist/
-          # VAŽNO: postavi tačan put!
-          # Ako je FTP user "zaključan" u public_html, koristi samo "/"
-          # Ako nije zaključan, a deploy ide u glavni domen:
-          server-dir: /
+          server-dir: /p
           log-level: verbose
           timeout: 60000
           state-name: .ftp-deploy-sync.json
+          dangerous-clean-slate: false # ne briši postojeće fajlove (npr. uploadovane slike)
