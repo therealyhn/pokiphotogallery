@@ -18,15 +18,14 @@ export default function PhotoCard({ photo, align, onClick }) {
       variants={variants}
       onClick={onClick}
     >
-      {/* Galerija slike - kontrolisana proporcija */}
+      {/* imgs*/}
       <div className="w-full aspect-[3/2]">
         <img
           src={photo.src}
           alt={photo.year}
           loading="lazy"
-          // zoomed out visually: scale(0.9). transition for smoothness.
-          style={{ transform: "scale(0.8)" }}
-          className="w-full h-full object-cover object-center rounded-t-xl transition-transform duration-300"
+          style={{ transform: "scale(0.95)" }}
+          className="w-full h-96 object-contain object-center rounded-t-xl transition-transform duration-300"
         />
       </div>
 
