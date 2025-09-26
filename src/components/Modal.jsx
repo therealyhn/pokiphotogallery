@@ -42,31 +42,33 @@ export default function Modal({ photo, onClose }) {
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-            {/* Modal box - centriran i uži */}
-            <div className="bg-white rounded-xl shadow-lg max-w-3xl w-auto mx-auto relative">
-                {/* Close dugme */}
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center p-4">
+            {/* Fullscreen container; content centered but image large */}
+            <div className="relative w-full h-full max-w-none max-h-full flex flex-col">
+                {/* Close btn top-right */}
                 <button
                     onClick={onClose}
-                    className="absolute top-2 right-2 text-gray-600 hover:text-black"
+                    className="absolute top-4 right-4 z-30 bg-white/90 rounded-full p-2 shadow hover:bg-white"
+                    aria-label="Close"
                 >
                     ✖
                 </button>
 
-                {/* Slika */}
-                <div className="flex justify-center items-center p-4">
+                {/* Image area - occupies available vertical space, centered */}
+                <div className="flex-1 flex items-center justify-center">
                     <img
                         src={photo.src}
                         alt={photo.year}
                         loading="lazy"
-                        className="max-h-[80vh] max-w-full object-contain mx-auto rounded"
+                        // image scales to fit viewport while retaining aspect
+                        className="max-h-[92vh] max-w-full object-contain rounded"
                     />
                 </div>
 
-                {/* Tekst i kontrole */}
-                <div className="p-6">
+                {/* Controls panel (overlay-like, pinned to bottom) */}
+                <div className="bg-white/95 backdrop-blur-sm border-t px-6 py-5">
                     {editing ? (
-                        <form onSubmit={handleEdit} className="space-y-4">
+                        <form onSubmit={handleEdit} className="max-w-3xl mx-auto space-y-4">
                             <div>
                                 <label className="block text-sm font-medium">Year</label>
                                 <input
@@ -95,56 +97,35 @@ export default function Modal({ photo, onClose }) {
                                 />
                             </div>
                             <div className="flex gap-3">
-                                <button
-                                    type="submit"
-                                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
-                                >
+                                <button type="submit" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
                                     Save
                                 </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setEditing(false)}
-                                    className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg"
-                                >
+                                <button type="button" onClick={() => setEditing(false)} className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg">
                                     Cancel
                                 </button>
                             </div>
                         </form>
                     ) : (
-                        <>
-                            <p className="text-main font-heading font-semibold text-lg">
-                                {photo.year}
-                            </p>
-                            <p className="text-gray-700 italic">{photo.description}</p>
+                        <div className="max-w-3xl mx-auto">
+                            <div className="flex items-start justify-between gap-4">
+                                <div>
+                                    <p className="text-lg font-semibold">{photo.year}</p>
+                                    <p className="text-gray-700 italic">{photo.description}</p>
+                                </div>
 
-
-
-                            <div className="mt-4 flex gap-3">
-                                <button
-                                    onClick={() => setEditing(true)}
-                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
-                                >
-                                    ✏ Edit
-                                </button>
-                                <button
-                                    onClick={handleDelete}
-                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-                                >
-                                    🗑 Delete
-                                </button>
-                                
-                                <div className="mt-4">
-                                    <label className="block text-sm font-medium">Password</label>
+                                <div className="ml-auto flex items-center gap-3">
                                     <input
                                         type="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full border rounded-lg p-2"
-                                        required
+                                        placeholder="Password"
+                                        className="border rounded-lg p-2 mr-2"
                                     />
+                                    <button onClick={() => setEditing(true)} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">✏ Edit</button>
+                                    <button onClick={handleDelete} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">🗑 Delete</button>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
