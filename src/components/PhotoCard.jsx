@@ -10,7 +10,7 @@ export default function PhotoCard({ photo, align, onClick }) {
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-xl overflow-hidden w-[95%] sm:w-[420px] md:w-[600px] cursor-pointer"
+      className="bg-white rounded-xl shadow-xl overflow-hidden w-[90%] sm:w-[420px] md:w-[600px] cursor-pointer"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -24,17 +24,17 @@ export default function PhotoCard({ photo, align, onClick }) {
           src={photo.src}
           alt={photo.year}
           loading="lazy"
-          className="w-full h-56 sm:h-72 md:h-96 object-cover object-center rounded-t-xl transition-transform duration-500 hover:scale-[1.02]"
+          style={{ transform: "scale(0.95)" }}
+          className="w-full h-64 sm:h-80 md:h-96 object-contain object-center rounded-t-xl transition-transform duration-300"
         />
       </div>
 
       {/* Box sa pig.png u dnu desno */}
       <div className="relative p-4 sm:p-6 bg-gradient-to-t from-gray-50 to-white overflow-hidden">
-        {/* pig pozadina */}
         <img
           src={pig}
           alt=""
-          className="absolute bottom-2 right-2 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain opacity-40 pointer-events-none"
+          className="absolute bottom-2 right-2 w-12 sm:w-20 h-12 sm:h-20 object-contain opacity-50 pointer-events-none"
         />
 
         <div className="relative z-10">

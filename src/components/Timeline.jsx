@@ -18,7 +18,7 @@ export default function Timeline() {
             {/* centralna linija */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-300 h-full hidden sm:block"></div>
 
-            <div className="flex flex-col space-y-[-60px] sm:space-y-[-80px]">
+            <div className="flex flex-col space-y-6 sm:space-y-[-80px]">
                 {photos.map((photo, index) => (
                     <div
                         key={index}
