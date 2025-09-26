@@ -175,17 +175,18 @@ export default function Modal({ photo, onClose }) {
                                     ✏ Edit
                                 </button>
                                 <button
+                                    onClick={handleDownload}
+                                    className="bg-main hover:bg-sec text-black px-4 py-2 rounded-lg"
+                                >
+                                    ⬇ Download
+                                </button>
+                                <button
                                     onClick={handleDelete}
                                     className="bg-red-500 hover:bg-red-600 text-black px-4 py-2 rounded-lg"
                                 >
                                     🗑 Delete
                                 </button>
-                                <button
-                                    onClick={handleDownload}
-                                    className="bg-orange-500 hover:bg-orange-600 text-black px-4 py-2 rounded-lg"
-                                >
-                                    ⬇ Download
-                                </button>
+
                             </div>
 
                             {/* Password input u view modu */}
