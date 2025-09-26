@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
+import pig from "../assets/pig.png";
 
 export default function PhotoCard({ photo, align, onClick }) {
   const variants = {
@@ -33,6 +34,14 @@ export default function PhotoCard({ photo, align, onClick }) {
         <p className="font-body text-gray-700 text-base italic">
           {photo.description}
         </p>
+      </div>
+      {/* pig */}
+      <div className="w-20 h-20 flex-shrink-0">
+        <img
+          src={pig}
+          alt="decorative"
+          className="w-full h-full object-contain opacity-60"
+        />
       </div>
     </motion.div>
   );
