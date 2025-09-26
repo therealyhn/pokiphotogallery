@@ -56,6 +56,10 @@ export default function Gallery() {
       </div>
 
       <Timeline />
+      <a href="/upload.php" className="text-orange-600 font-bold underline">
+        Upload new photo
+      </a>
+
     </section>
   );
 }
