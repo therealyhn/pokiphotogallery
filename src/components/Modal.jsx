@@ -84,8 +84,8 @@ export default function Modal({ photo, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 max-w-3xl w-[95%] md:w-full max-h-[90vh] overflow-y-auto relative">
+    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 animate-fadeIn px-2">
+      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md md:max-w-3xl max-h-[90vh] overflow-y-auto relative">
         {/* Close dugme */}
         <button
           onClick={onClose}
@@ -98,12 +98,12 @@ export default function Modal({ photo, onClose }) {
         <img
           src={photo.src}
           alt={photo.year}
-          className="w-full max-h-[60vh] object-contain rounded-t-2xl shadow-md bg-gray-50"
+          className="w-full max-h-[50vh] object-contain rounded-t-2xl shadow-md bg-gray-50"
           loading="lazy"
         />
 
         {/* Info / kontrole */}
-        <div className="p-6">
+        <div className="p-4 md:p-6">
           {editing ? (
             <form onSubmit={handleEdit} className="space-y-4">
               <div>
@@ -139,9 +139,7 @@ export default function Modal({ photo, onClose }) {
                   required
                 />
               </div>
-              {error && (
-                <p className="text-red-500 text-sm">{error}</p>
-              )}
+              {error && <p className="text-red-500 text-sm">{error}</p>}
               <div className="flex gap-3 flex-wrap">
                 <button
                   type="submit"
@@ -201,9 +199,7 @@ export default function Modal({ photo, onClose }) {
                 />
               </div>
 
-              {error && (
-                <p className="text-red-500 text-sm mt-2">{error}</p>
-              )}
+              {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             </>
           )}
         </div>
