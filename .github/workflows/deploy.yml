@@ -2,7 +2,7 @@ name: Deploy to Hostinger (Vite + FTP)
 
 on:
   push:
-    branches: [main]
+    branches: [main] 
   workflow_dispatch:
 
 jobs:
@@ -25,19 +25,26 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
-      # Kopiraj PHP i JSON fajlove u dist
-      - name: Copy backend files
-        run: |
-          cp upload.php dist/
-          mkdir -p dist/uploads
-          cp uploads/images.json dist/uploads/images.json || echo "[]" > dist/uploads/images.json
-
-      - name: List dist (diagnostic)
+      # Dijagnostika
+      - name: List dist
         run: |
           echo "root:"
           ls -lah
           echo "dist:"
-          ls -lah dist
+          ls -lah dist || echo "dist missing!"
+
+      # Kopiranje PHP fajlova
+      - name: Copy backend files
+        run: |
+          cp upload.php dist/
+          cp edit.php dist/
+          cp delete.php dist/
+          mkdir -p dist/uploads
+          cp uploads/images.json dist/uploads/images.json || echo "[]" > dist/uploads/images.json
+
+      # Generiši secret.key sa lozinkom
+      - name: Create password file
+        run: echo "${{ secrets.GALLERY_PASSWORD }}" > dist/secret.key
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -52,4 +59,3 @@ jobs:
           log-level: verbose
           timeout: 60000
           state-name: .ftp-deploy-sync.json
-          dangerous-clean-slate: false # ne briši postojeće fajlove (npr. uploadovane slike)

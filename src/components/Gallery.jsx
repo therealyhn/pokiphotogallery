@@ -56,17 +56,19 @@ export default function Gallery() {
       </div>
 
       <Timeline />
-      <motion.a
-        href="/upload.php"
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md mt-6 transition"
-      >
-        Upload New Photo
-      </motion.a>
+      <div className="flex justify-center">
+        <motion.a
+          href="/upload.php"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md mt-6 transition"
+        >
+          Ubacite Novu Sličicu
+        </motion.a>
+      </div>
 
 
     </section>
