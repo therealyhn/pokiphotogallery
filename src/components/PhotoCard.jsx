@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
-import pig from "../assets/pig.png"; // prilagodi path ako je drugde
+import pig from "../assets/pig.png";
 
 export default function PhotoCard({ photo, align, onClick }) {
     const variants = {
@@ -10,7 +10,7 @@ export default function PhotoCard({ photo, align, onClick }) {
 
     return (
         <motion.div
-            className="bg-white rounded-xl shadow-xl overflow-hidden w-[420px] md:w-[600px] cursor-pointer"
+            className="bg-white rounded-xl shadow-xl overflow-hidden w-[420px] md:w-[550px] cursor-pointer"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
