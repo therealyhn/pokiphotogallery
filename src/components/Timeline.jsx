@@ -14,19 +14,20 @@ export default function Timeline() {
     }, []);
 
     return (
-        <div className="relative w-full max-w-7xl mx-auto">
+        <div className="relative w-full max-w-7xl mx-auto px-2 sm:px-4">
             {/* centralna linija */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-300 h-full"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-300 h-full hidden sm:block"></div>
 
-            <div className="flex flex-col space-y-[-80px]">
+            <div className="flex flex-col space-y-[-60px] sm:space-y-[-80px]">
                 {photos.map((photo, index) => (
                     <div
                         key={index}
-                        className={`relative flex w-full ${index % 2 === 0 ? "justify-start" : "justify-end"
-                            }`}
+                        className={`relative flex w-full 
+              ${index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"} 
+              justify-center`}
                     >
-                        {/* marker */}
-                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-tr border-4 border-white rounded-full shadow-md"></span>
+                        {/* marker – prikazuje se samo na većim ekranima */}
+                        <span className="hidden sm:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-tr border-4 border-white rounded-full shadow-md"></span>
 
                         <PhotoCard
                             photo={photo}

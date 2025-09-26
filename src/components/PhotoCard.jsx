@@ -10,7 +10,7 @@ export default function PhotoCard({ photo, align, onClick }) {
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-xl overflow-hidden w-[420px] md:w-[600px] cursor-pointer"
+      className="bg-white rounded-xl shadow-xl overflow-hidden w-[90%] sm:w-[420px] md:w-[600px] cursor-pointer"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -18,30 +18,30 @@ export default function PhotoCard({ photo, align, onClick }) {
       variants={variants}
       onClick={onClick}
     >
-      {/* imgs*/}
-      <div className="w-full aspect-[3/2]">
+      {/* Slika */}
+      <div className="w-full">
         <img
           src={photo.src}
           alt={photo.year}
           loading="lazy"
-          style={{ transform: "scale(0.95)" }}
-          className="w-full h-96 object-contain object-center rounded-t-xl transition-transform duration-300"
+          className="w-full h-64 sm:h-80 md:h-96 object-contain object-center rounded-t-xl transition-transform duration-500 hover:scale-[1.02]"
         />
       </div>
 
       {/* Box sa pig.png u dnu desno */}
       <div className="relative p-6 bg-gradient-to-t from-gray-50 to-white overflow-hidden">
+        {/* pig pozadina */}
         <img
           src={pig}
           alt=""
-          className="absolute bottom-2 right-2 w-20 h-20 object-contain opacity-50 pointer-events-none"
+          className="absolute bottom-2 right-2 w-16 sm:w-20 h-16 sm:h-20 object-contain opacity-40 pointer-events-none"
         />
 
         <div className="relative z-10">
           <p className="text-tr font-heading font-semibold text-lg mb-1">
             {photo.year}
           </p>
-          <p className="font-body text-gray-700 text-base italic">
+          <p className="font-body text-gray-700 text-sm sm:text-base italic">
             {photo.description}
           </p>
         </div>
