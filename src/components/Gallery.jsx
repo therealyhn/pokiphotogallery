@@ -64,7 +64,7 @@ export default function Gallery() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md mt-6 transition"
+          className="inline-block bg-tr hover:bg-main text-white duration-500 font-medium py-2 px-6 rounded-lg shadow-md mt-6 transition"
         >
           Ubacite Novu Sličicu
         </motion.a>
