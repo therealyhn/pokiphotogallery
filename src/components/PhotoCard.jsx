@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
-import pig from "../assets/pig.png";
+import pig from "../assets/pig.png"; // proveri putanju
 
 export default function PhotoCard({ photo, align, onClick }) {
   const variants = {
@@ -18,30 +18,34 @@ export default function PhotoCard({ photo, align, onClick }) {
       variants={variants}
       onClick={onClick}
     >
-      {/* Slika u galeriji - ujednačena visina + lazy loading */}
-      <img
-        src={photo.src}
-        alt={photo.year}
-        loading="lazy"
-        className="w-full h-96 object-cover object-center"
-      />
-
-      {/* Box za year + description */}
-      <div className="p-6 bg-gradient-to-t from-gray-50 to-white">
-        <p className="text-main font-heading font-semibold text-lg mb-1">
-          {photo.year}
-        </p>
-        <p className="font-body text-gray-700 text-base italic">
-          {photo.description}
-        </p>
+      {/* Slika u galeriji */}
+      <div className="w-full aspect-[3/2]">
+        <img
+          src={photo.src}
+          alt={photo.year}
+          loading="lazy"
+          className="w-full h-full object-cover object-center rounded-t-xl"
+        />
       </div>
-      {/* pig */}
-      <div className="w-20 h-20 flex-shrink-0">
+
+      {/* Box sa pig.png u dnu desno */}
+      <div className="relative p-6 bg-gradient-to-t from-gray-50 to-white overflow-hidden">
+        {/* pig.png kao watermark bottom-right */}
         <img
           src={pig}
-          alt="decorative"
-          className="w-full h-full object-contain opacity-60"
+          alt=""
+          className="absolute bottom-2 right-2 w-16 h-16 object-contain opacity-30 pointer-events-none"
         />
+
+        {/* Tekst */}
+        <div className="relative z-10">
+          <p className="text-main font-heading font-semibold text-lg mb-1">
+            {photo.year}
+          </p>
+          <p className="font-body text-gray-700 text-base italic">
+            {photo.description}
+          </p>
+        </div>
       </div>
     </motion.div>
   );
