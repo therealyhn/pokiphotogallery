@@ -2,10 +2,10 @@
 import { motion } from "framer-motion";
 import pig from "../assets/pig.png";
 
-export default function PhotoCard({ photo, align, onClick }) {
+export default function PhotoCard({ photo, onClick }) {
   const variants = {
-    hidden: { opacity: 0, x: align === "left" ? -120 : 120 },
-    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, y: 120 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -49,3 +49,4 @@ export default function PhotoCard({ photo, align, onClick }) {
     </motion.div>
   );
 }
+
