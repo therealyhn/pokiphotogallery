@@ -24,7 +24,6 @@ This web app serves both as a **timeline of their journey** and as an **interact
 
 - Clicking a photo opens it in a fullscreen **modal**.
 - Includes **edit**, **delete**, and **download** options — all password-protected.
-- Smooth transitions and focus lock to prevent background scrolling.
 
 ### ☁️ Image Upload System
 
